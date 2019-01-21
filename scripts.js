@@ -18,9 +18,12 @@ class Train {
     }
 
     move_to_next_station() {
-        if (this.actual_station == this.railway.terminal_station) {
-            this.railway.stations = this.railway.stations.reverse()
-            this.actual_station = this.railway.stations[1]
+      if (this.next_station == this.railway.terminal_station) {
+          this.railway.stations = this.railway.stations.reverse()
+          this.railway.terminal_station =  this.railway.stations[this.railway.stations.length - 1];
+          this.actual_station = this.railway.stations[0]
+          this.next_station = this.railway.stations[1]
+
         } else {
             this.actual_station = this.railway.stations[this.railway.stations.indexOf(this.actual_station) + 1]
             this.next_station = this.railway.stations[this.railway.stations.indexOf(this.actual_station) + 1]
@@ -89,7 +92,7 @@ console.log("We have three trains: \n" +
             train_two.name + " is starting from: " + train_two.position + "\n" +
             train_three.name + " is starting from: " + train_three.position);
 
-for (let i = 1; i < 10; i++) {
+for (let i = 1; i < 20; i++) {
   console.log("After " + i + ". move:");
   transport();
 }
